@@ -186,20 +186,8 @@ function PriceCard({ planId }) {
     return unsubscribe;
   }, [planId]);
 
-  return (
-    <div
-      className={`p-8 rounded-2xl border flex flex-col justify-between relative overflow-hidden transition-all duration-300 ${
-        plan.popular
-          ? 'bg-secondary-bg/35 border-primary-accent shadow-xl shadow-primary-accent/5 lg:scale-105'
-          : 'bg-secondary-bg/15 border-border-neutral/10 hover:border-primary-accent/40'
-      }`}
-    >
-      {plan.popular && (
-        <span className="absolute top-0 right-8 transform -translate-y-1/2 bg-primary-accent text-primary-bg font-mono font-bold text-[10px] uppercase tracking-wider px-3 py-1.5 rounded-full border border-primary-bg">
-          RECOMMENDED
-        </span>
-      )}
-
+  const cardContent = (
+    <>
       <div>
         <h3 className="text-xl font-bold font-mono text-light-surface mb-2">{plan.name}</h3>
         <p className="text-xs text-light-surface/65 mb-6 leading-relaxed">{plan.desc}</p>
@@ -239,6 +227,25 @@ function PriceCard({ planId }) {
       >
         Select Blueprint
       </button>
+    </>
+  );
+
+  if (plan.popular) {
+    return (
+      <div className="relative pt-6 lg:scale-105 transition-all duration-300 h-full flex flex-col">
+        <span className="absolute top-0 left-1/2 transform -translate-x-1/2 bg-primary-accent text-primary-bg font-mono font-bold text-[10px] uppercase tracking-wider px-3.5 py-1.5 rounded-full border border-primary-bg z-10 shadow-md whitespace-nowrap">
+          RECOMMENDED
+        </span>
+        <div className="p-8 rounded-2xl border flex flex-col justify-between relative overflow-hidden bg-secondary-bg/35 border-primary-accent shadow-xl shadow-primary-accent/5 flex-1">
+          {cardContent}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="p-8 rounded-2xl border flex flex-col justify-between relative overflow-hidden bg-secondary-bg/15 border-border-neutral/10 hover:border-primary-accent/40 transition-all duration-300 h-full">
+      {cardContent}
     </div>
   );
 }
