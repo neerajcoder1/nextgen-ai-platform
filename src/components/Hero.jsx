@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon } from './Icons';
+import CopyButton from './CopyButton';
 
 export default function Hero() {
   return (
@@ -87,16 +88,22 @@ export default function Hero() {
 
             {/* Terminal Body */}
             <div className="p-6 font-mono text-xs sm:text-sm text-light-surface/90 space-y-4 overflow-x-auto min-h-[300px]">
-              <div>
-                <span className="text-primary-accent">$</span> <span className="text-light-surface">npx kronos-init --endpoint edge-us-east</span>
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <span className="text-primary-accent">$</span> <span className="text-light-surface">npx kronos-init --endpoint edge-us-east</span>
+                </div>
+                <CopyButton text="npx kronos-init --endpoint edge-us-east" label="Copy init command" />
               </div>
               <div className="text-light-surface/65">
                 ● Connecting to Kronos Edge Orchestrator... <br />
                 ✔ Handshake established (AES-256-GCM) <br />
                 ✔ Pulled schema: <span className="text-secondary-accent">pipeline_v2.json</span>
               </div>
-              <div>
-                <span className="text-primary-accent">$</span> <span className="text-light-surface">kronos deploy --cluster-auto</span>
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <span className="text-primary-accent">$</span> <span className="text-light-surface">kronos deploy --cluster-auto</span>
+                </div>
+                <CopyButton text="kronos deploy --cluster-auto" label="Copy deploy command" />
               </div>
               <div className="p-3 bg-primary-bg/50 rounded border border-border-neutral/10 space-y-1">
                 <div className="flex justify-between">

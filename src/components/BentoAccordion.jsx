@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Icon } from './Icons';
+import CopyButton from './CopyButton';
 
 export default function BentoAccordion() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -122,10 +123,12 @@ export default function BentoAccordion() {
                         <div className="p-4 bg-primary-bg rounded-lg border border-border-neutral/15 font-mono text-xs text-light-surface/80">
                           <div className="flex items-center justify-between text-[10px] text-light-surface/40 mb-2 border-b border-border-neutral/10 pb-1.5">
                             <span>CLI Terminal</span>
-                            <span>v2.4</span>
+                            <CopyButton text={item.code} label="Copy terminal snippet" />
                           </div>
-                          <span className="text-primary-accent">$ </span>
-                          {item.code}
+                          <div className="flex items-center space-x-1.5 overflow-x-auto py-1">
+                            <span className="text-primary-accent shrink-0">$</span>
+                            <span className="whitespace-nowrap">{item.code}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -187,11 +190,12 @@ export default function BentoAccordion() {
                   </div>
 
                   {/* CLI Snippet at the bottom of the card */}
-                  <div className="relative z-10 pt-4 border-t border-border-neutral/10 font-mono text-xs flex items-center justify-between">
-                    <span className="text-light-surface/40">CLI Snippet:</span>
-                    <span className="text-light-surface/80 group-hover:text-primary-accent transition-colors duration-200">
-                      {item.code}
-                    </span>
+                  <div className="relative z-10 pt-4 border-t border-border-neutral/10 font-mono text-xs flex items-center justify-between gap-4">
+                    <div className="flex items-center space-x-2 overflow-hidden mr-2">
+                      <span className="text-light-surface/40 shrink-0">CLI Snippet:</span>
+                      <span className="text-light-surface/80 truncate font-semibold">{item.code}</span>
+                    </div>
+                    <CopyButton text={item.code} label="Copy CLI command" />
                   </div>
                 </div>
               );

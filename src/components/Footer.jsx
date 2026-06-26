@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon } from './Icons';
+import CopyButton from './CopyButton';
 
 export default function Footer() {
   const footerSections = [
@@ -52,6 +53,16 @@ export default function Footer() {
           <div className="font-mono text-xs text-light-surface/40 flex items-center space-x-2">
             <span className="inline-block w-2.5 h-2.5 rounded-full bg-primary-accent animate-pulse" />
             <span>All systems operational at edge-08</span>
+          </div>
+          <div className="pt-2 space-y-3 max-w-sm">
+            <div className="flex items-center justify-between bg-secondary-bg/15 p-2.5 rounded-lg border border-border-neutral/10 gap-4 font-mono text-xs text-light-surface/75">
+              <span className="truncate">ops@kronos.ai</span>
+              <CopyButton text="ops@kronos.ai" label="Copy support email" />
+            </div>
+            <div className="flex items-center justify-between bg-secondary-bg/15 p-2.5 rounded-lg border border-border-neutral/10 gap-4 font-mono text-xs text-light-surface/75">
+              <span className="truncate text-light-surface/60">github.com/neerajcoder1/nextgen-ai-platform</span>
+              <CopyButton text="https://github.com/neerajcoder1/nextgen-ai-platform" label="Copy GitHub repository link" />
+            </div>
           </div>
         </div>
 
